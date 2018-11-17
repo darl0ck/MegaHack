@@ -22,14 +22,10 @@ $(document).ready(function () {
             const res = (event.results[0][0].transcript);
             for (let el of event.results){
                 console.info(el[0].transcript);
-                if (el[0].transcript.toLowerCase().indexOf('главная')+1){
-                    window.open('lk_main.html','_self');
+                if (el[0].transcript.toLowerCase().indexOf('главная')+1 || el[0].transcript.toLowerCase().indexOf('главное')+1){
+                    window.open('/lk/main/','_self');
                 }else if(el[0].transcript.toLowerCase().indexOf('помощь')+1){
-                    window.open('lk_help.html','_self');
-                }else if(el[0].transcript.toLowerCase().indexOf('проекты')+1){
-                    window.open('sign_up.html','_self');
-                }else if(el[0].transcript.toLowerCase().indexOf('настройки')+1){
-                    window.open('sign_up.html','_self');
+                    window.open('/lk/help/','_self');
                 }
             }
         };

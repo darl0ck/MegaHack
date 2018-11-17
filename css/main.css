@@ -3,6 +3,7 @@
 body{
 	margin: 0;
 	padding: 0;
+	min-width: 370px;
 }
 img{display: block;}
 a{text-decoration: none;}
@@ -34,6 +35,7 @@ header .container{
 	padding: 20px 0;
 	display: flex;
 	justify-content: space-between;
+	min-width: 370px;
 }
 header a{
 	color: #fff;
@@ -138,9 +140,9 @@ main{
 	max-width: 180px;
 	margin: 0 auto;
 }
-.catalog_columns a{
+.catalog_columns p{
 	display: block;
-	color: #000;
+	color: #000!important;
 	margin-top: 10px;
 }
 #catalog_center{
@@ -247,9 +249,16 @@ footer section p{font-weight: bold}
 	display: flex;
 	align-items: center;
 }
-.footer_left .border{margin: 0px 20px;}
+.footer_left .border{margin: 0 20px;}
 .footer_left p{text-transform: uppercase;}
+@media screen and (max-width: 1200px) {
+	.helpers_box{ display: block!important; }
+	#mentor_right > div{ width: 50% }
+	#mentor_left{ margin-bottom: 20px }
+	#margin-right{ margin-right: 0}
+}
 @media screen and (max-width: 991.5px){
+	.main_wrap{ width: 100% }
 	.burger{
 		transition: 0.3s;
 		display: block;
@@ -306,4 +315,7 @@ footer section p{font-weight: bold}
 		margin-top: 40px;
 		order: 2;
 	}
+}
+@media screen and (max-width: 767px) {
+	#mentor_right > div{ width: 100% }
 }

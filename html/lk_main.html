@@ -3,10 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<title>EL</title>
+	<title>INDEX</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&amp;subset=cyrillic" rel="stylesheet">
-	<link rel="stylesheet" href="../css/sign_up.css">
+	<link rel="stylesheet" href="../css/lk_main.css">
 </head>
 <body>
 	<header>
@@ -21,29 +21,33 @@
 				<ul>
 					<li><a href="">Фрилансеры</a></li>
 					<li><a href="">Работа</a></li>
-                    <li class="border"></li>
-                    <li><a class="last_nav" href="">Вход</a></li>
+					<li class="border"></li>
 				</ul>
 			</nav>
 		</div>
 	</header>
+
+
 	<main>
-		<div class="container">
-			<div>
-				<p>Регистрация исполнителя<br><span>Проверка</span></p>
+		<article class="container">
+
+
+			<div class="main_links_wrap">
+				<p>Выберите тип регистрации</p>
+				<a href="">Я - исполнитель</a>
+				<a href="">Я - наставник</a>
+				<a href="">Я - заказчик</a>
 			</div>
-			<div class="main_center">
-				<div>
-					<img src="../img/speach.png" alt="">
-					<p><span>Вы слышите голос?</span></p>
-				</div>
-				<aside>
-					<button>Да</button>
-					<button>Нет</button>
-				</aside>
+			<div class="main_img_wrap">
+				<img src="../img/comunicate_persons.png" alt="">
 			</div>
-		</div>
+
+
+		</article>
 	</main>
+
+
+
 	<footer>
 		<article class="container">
 			<div class="footer_left">
@@ -53,31 +57,36 @@
 			</div>
 			<section>
 				<p>Профиль</p>
-				<a href="">Войти</a>
-				<a href="">Зарегистрироваться</a>
-				<a href="">Востановить доступ</a>
-				<a href="">Рекомендации фрилансерам</a>
-				<a href="">Рекомендации заказчикам</a>
-				<a href="">Рекомендации наставникам</a>
+				<a href="#">Войти</a>
+				<a href="#">Зарегистрироваться</a>
+				<a href="#">Востановить доступ</a>
+				<a href="#">Рекомендации фрилансерам</a>
+				<a href="#">Рекомендации заказчикам</a>
+				<a href="#">Рекомендации наставникам</a>
 			</section>
 			<section>
 				<p>Проект</p>
-				<a href="">Опубликовать проект</a>
+				<a href="#">Опубликовать проект</a>
 			</section>
 			<section>
 				<p>О сайте</p>
-				<a href="">Помощь</a>
-				<a href="">Правила</a>
-				<a href="">Контакты</a>
+				<a href="#">Помощь</a>
+				<a href="#">Правила</a>
+				<a href="#">Контакты</a>
 			</section>
 		</article>
 	</footer>
+
+
+
 	<script>
-		jQuery(document).ready(function($) {
+		$(document).ready(function($) {
 			$('.burger').click(function() {
 				$('header ul').slideToggle();
 			});
 		});
 	</script>
+
+
 </body>
 </html>

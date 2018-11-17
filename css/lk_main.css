@@ -7,13 +7,15 @@ body{
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	min-width: 340px;
+}
+header,footer{
 	background: rgb(0,131,176);
 	background: -moz-linear-gradient(45deg,  rgba(0,131,176,1) 0%, rgba(0,180,219,1) 100%);
 	background: -webkit-linear-gradient(45deg,  rgba(0,131,176,1) 0%,rgba(0,180,219,1) 100%);
 	background: linear-gradient(45deg,  rgba(0,131,176,1) 0%,rgba(0,180,219,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0083b0', endColorstr='#00b4db',GradientType=1 );
 	background-repeat: no-repeat;
-	min-width: 340px;
 }
 img{display: block;}
 a{text-decoration: none;}
@@ -27,23 +29,10 @@ article{
 	justify-content: space-between;
 	align-items: center;	
 }
-main a{
-	display: block;
-	width: 400px;
-	text-align: center;
-	padding: 15px 40px;
-	background-color: #80d8eb;
-	border-radius: 100px;
-	margin-top: 20px;
-}
-main img{
-	display: block;
-	width: 500px;
-	height: auto;
-}
-@media screen and (max-width: 1199.5px){
-	main img{width: 300px;}
-}
+
+
+
+
 @media screen and (max-width: 992px){
 	article{
 		flex-direction: column-reverse;

@@ -14,18 +14,19 @@
     <script  src="../js/all_script.js"></script>
 </head>
 <body>
+
 	<header>
 		<div class="container">
 			<div class="header_left">
-                <a href="index.html"><img src="../img/logo.png" alt="" class="logo"></a>
+                <a href="index.html"><img src="../img/logo.png" alt="Logo" class="logo"></a>
                 <div class="border"></div>
-				<input type="text" placeholder="Поиск...">
+				<input type="text" placeholder="Поиск"/>
 			</div>
 			<nav>
-				<img src="../img/burger.svg" alt="" class="burger">
+				<img src="../img/burger.svg" alt="burger" class="burger">
 				<ul>
-					<li><a href="">Главная</a></li>
-					<li><a href="">Помощь</a></li>
+					<li><a href="index.html">Главная</a></li>
+					<li><a href="lk_help.html">Помощь</a></li>
 					<li class="border"></li>
 				</ul>
 			</nav>
@@ -91,6 +92,7 @@
 
 
 
+	<!-- FOOTER -->
 	<footer>
 		<article class="container">
 			<div class="footer_left">
@@ -100,9 +102,8 @@
 			</div>
 			<section>
 				<p>Профиль</p>
-				<a href="#">Войти</a>
-				<a href="#">Зарегистрироваться</a>
-				<a href="#">Востановить доступ</a>
+				<a href="lk_main.html">Войти</a>
+				<a href="sign_up.html">Зарегистрироваться</a>
 				<a href="#">Рекомендации фрилансерам</a>
 				<a href="#">Рекомендации заказчикам</a>
 				<a href="#">Рекомендации наставникам</a>
@@ -119,15 +120,6 @@
 			</section>
 		</article>
 	</footer>
-
-	<script>
-		$(document).ready(function($) {
-			$('.burger').click(function() {
-				$('header ul').slideToggle();
-			});
-		});
-	</script>
-
-
+	<!-- END -->
 </body>
 </html>

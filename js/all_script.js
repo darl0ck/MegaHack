@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+    $('.burger').click(function() {
+        $('header ul').slideToggle();
+    });
+
     'use strict';
     setTimeout(()=>main(), 1000);
     function main() {
@@ -31,13 +35,10 @@ $(document).ready(function () {
         };
     }
 
-
-
-
     $(document).keydown(function (e) {
         if(e.keyCode === 32){
             e.preventDefault();
-            window.location.replace("sign_up.html");
+            window.location.replace("lk_main.html");
         }
     });
 

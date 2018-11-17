@@ -18,6 +18,7 @@ header,footer{
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0083b0', endColorstr='#00b4db',GradientType=1 );
 	background-repeat: no-repeat;
 }
+header{ padding: 0 20px }
 img{display: block;}
 a{text-decoration: none;}
 body *{
@@ -48,10 +49,7 @@ article{
 }
 .content_box{ position: relative }
 #all_content{
-	position: absolute;
-	width: 100%;
-	padding-left: 100px;
-	float: right;
+	padding: 0 0 0 100px;
 }
 #all_content p{ color: #323232 }
 .line_block{
@@ -104,4 +102,11 @@ article{
 		width: 100%;
 	}
 	main a{width: 100%;}
+}
+
+@media screen and (max-width: 767px) {
+	.info_box{
+		width: 100%;
+		margin-bottom: 10px;
+	}
 }

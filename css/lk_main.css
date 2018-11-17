@@ -31,7 +31,7 @@ article{
 	justify-content: space-between;
 	align-items: center;
 }
-/* main LK*/
+/* ГЛАВНАЯ */
 .write_box{
 	border-radius: 5px;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -87,8 +87,10 @@ article{
 	margin-bottom: 5px;
 }
 
-/* END */
+/* ОБУЧЕНИЕ */
 
+
+/* END */
 @media screen and (max-width: 992px){
 	article{
 		flex-direction: column-reverse;

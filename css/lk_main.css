@@ -8,6 +8,7 @@ body{
 	flex-direction: column;
 	justify-content: space-between;
 	min-width: 340px;
+	background: #f6f8f8;
 }
 header,footer{
 	background: rgb(0,131,176);
@@ -23,15 +24,72 @@ body *{
 	font-family: 'Roboto', sans-serif;
 	color: #fff;
 }
-main{margin: 100px 0;}
+main{margin: 50px 0;}
 article{
 	display: flex;
 	justify-content: space-between;
-	align-items: center;	
+	align-items: center;
+}
+/* main LK*/
+.write_box{
+	border-radius: 5px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	background: #fff;
+}
+#navigation {
+	float: left;
+	position: relative;
+	z-index: 90;
+}
+#navigation li {
+	padding: 11px;
+	margin-bottom: 30px;
+	cursor: pointer;
+}
+.content_box{ position: relative }
+#all_content{
+	position: absolute;
+	width: 100%;
+	padding-left: 100px;
+	float: right;
+}
+#all_content p{ color: #323232 }
+.line_block{
+	width: 100%;
+	float: left;
+	margin-top: 25px;
+}
+.name_page{
+	width: 100%;
+	padding: 15px;
+	font-size: 18px;
+}
+.name_section{
+	padding-left: 15px;
+}
+.info_section{
+	margin-top: 20px;
+}
+.info_box{
+	width: 23%;
+	margin-right: 2%;
+	padding: 11px;
+	float: left;
+}
+.last_block{
+	width: 25%;
+	margin-right: 0;
+}
+.big_last_block{
+	width: 50%;
+	margin-right: 0;
+}
+.info_box h5{
+	color: #00a3c7;
+	margin-bottom: 5px;
 }
 
-
-
+/* END */
 
 @media screen and (max-width: 992px){
 	article{

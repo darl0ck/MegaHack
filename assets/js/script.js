@@ -185,7 +185,7 @@ function setupDataChannel() {
     dataChannel.onclose = checkDataChannelState;
     dataChannel.onmessage = event => {
         console.info(event.data);
-        const jsonData = JSON.parse(event.data);
+        const jsonData = event.data;
         if (jsonData.type === "chat-message") {
             insertMessageToDOM(jsonData, false);
         }

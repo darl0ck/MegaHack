@@ -235,7 +235,7 @@ function insertMessageToDOM(options, isFromMe) {
     if (options.emoji || name) {
         nameEl.innerText = options.emoji + ' ' + name;
     }
-    time.innerText = `${options.time.getHours()} : ${options.time.getMinutes()}`
+    time.innerText = `12 : 14`
     console.info('form lodaed',options);
 
     template.content.querySelector('.message__bubble').innerText = options.content;

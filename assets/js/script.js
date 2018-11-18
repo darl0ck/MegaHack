@@ -98,11 +98,11 @@ let room;
 let pc;
 
 
-function onSuccess() {};
+function onSuccess() {}
 
 function onError(error) {
     console.error(error);
-};
+}
 
 drone.on('open', error => {
     if (error) {
@@ -143,7 +143,7 @@ function startWebRTC(isOfferer) {
     if (isOfferer) {
         pc.onnegotiationneeded = () => {
             pc.createOffer(localDescCreated, error => console.error(error));
-        }
+        };
         dataChannel = pc.createDataChannel('chat');
         setupDataChannel();
     } else {
@@ -244,9 +244,6 @@ function insertMessageToDOM(options, isFromMe) {
     // Scroll to bottom
     messagesEl.scrollTop = messagesEl.scrollHeight - messagesEl.clientHeight;
 }
-
-
-
 
 const form = document.getElementById('form_test');
 console.log(form);

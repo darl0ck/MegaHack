@@ -202,14 +202,14 @@ function checkDataChannelState() {
     console.log('WebRTC channel state is:', dataChannel);
 }
 
-function processSubtitles(options) {
-    console.info(options)
-    const subtitles = template.content.querySelector('subtitles');
-    subtitles.innerText = options.content;
+// function processSubtitles(options) {
+//     console.info(options)
+//     const subtitles = template.content.querySelector('subtitles');
+//     subtitles.innerText = options.content;
 
-    //TO DO  
+//     //TO DO  
     
-}
+// }
 
 function insertMessageToDOM(options, isFromMe) {
     const template = document.querySelector('template[data-template="message"]');

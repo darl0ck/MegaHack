@@ -10,7 +10,6 @@ $(document).ready(function () {
     let space_key = false;
     const recognition = new SpeechRecognition();
 
-
     recognition.continuous = true;
     recognition.lang = 'ru-RU';
     recognition.interimResults = true;
@@ -20,7 +19,7 @@ $(document).ready(function () {
         const res = (event.results[0][0].transcript);
         for (let el of event.results){
             console.info(el[0].transcript);
-            if (el[0].transcript.toLowerCase().indexOf('Да')+1){
+            if (el[0].transcript.toLowerCase().indexOf('да')+1){
                 window.open('/lk/main/','_self');
             }
         }
@@ -35,21 +34,27 @@ $(document).ready(function () {
     setTimeout(()=>saveHelp(), 9000);
     function saveHelp() {
         if(!space_key){
-            let txtToSay = new SpeechSynthesisUtterance('Вы видите, что изображено на экране?');
+            let txtToSay = new SpeechSynthesisUtterance('У вас есть проблемы со зрением?');
             synth.speak(txtToSay);
         }
     }
 
     $(".btn_click").click(function () {
-        var id = $(this).add("id");
-        $(".question").css("display","none");
-        switch (id) {
-            case "yes_1":
+       var id = $(this).attr("id");
+       $(".question").css("display","none");
+       switch (id) {
+           case "yes_1":
                 $(".question_2").css("display","block");
+               let txtToSay = new SpeechSynthesisUtterance('Использовать режим управления голосом?');
+               synth.speak(txtToSay);
+               break;
 
-                break;
-        }
-
+           case "no_1":
+               $(".question_2").css("display","block");
+               let txtToSay = new SpeechSynthesisUtterance('Использовать режим управления голосом?');
+               synth.speak(txtToSay);
+               break;
+       }
     });
 
     $(document).keydown(function (e) {

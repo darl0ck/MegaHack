@@ -16,6 +16,21 @@
     <script  src="/assets/js/all_script.js"></script>
 </head>
 <body>
+	<div id="eye_btn"></div>
+<!-- 	<script>
+		$('#eye_btn').click(function(event) {
+			if (('body').attr('class', '') != 'black_theme'){
+				$('body').addClass('black_theme');
+			} else {
+				$('body').removeClass('black_theme')
+			}
+		});
+	</script> -->
+	<script>
+		$('#eye_btn').click(function(event) {
+			$('body').addClass('black_theme')
+		});
+	</script>
 	{{ template "header_lk" }}
 	<main>
 		<div class="container content_box">

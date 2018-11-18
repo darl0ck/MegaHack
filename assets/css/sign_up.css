@@ -88,6 +88,10 @@ button{
 	border: 0;
 	cursor: pointer;
 }
+.question{
+	display: none;
+}
+.question_1{display: block}
 @media screen and (max-width: 991.5px){
 	.burger{
 		transition: 0.3s;

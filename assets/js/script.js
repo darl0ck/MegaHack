@@ -1,4 +1,6 @@
 // Generate random room name if needed
+// Я.Собака
+
 if (!location.hash) {
     location.hash = Math.floor(Math.random() * 0xFFFFFF).toString(16);
 }

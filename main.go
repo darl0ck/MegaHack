@@ -8,8 +8,12 @@ import (
 	"net/http"
 )
 
-const crtPath = "server.crt"
-const keyPath = "server.key"
+// const crtPath = "server.crt"
+// const keyPath = "server.key"
+const crtPath = "/etc/letsencrypt/live/hackaton.paymon.org/fullchain.pem"
+const keyPath = "/etc/letsencrypt/live/hackaton.paymon.org/privkey.pem"
+
+var domainList = []string{"hackaton.paymon.org", "megahack.paymon.org"}
 
 func main() {
 	router := mux.NewRouter()
@@ -36,10 +40,12 @@ func main() {
 }
 
 func addRoute(router *mux.Router, path string, name string) {
-	router.HandleFunc(path, func(writer http.ResponseWriter, request *http.Request) {
-		fmt.Printf("%s\n", name)
-		page(writer, request, name)
-	})
+	for _, domain := range domainList {
+		router.Host(domain).Subrouter().HandleFunc(path, func(writer http.ResponseWriter, request *http.Request) {
+			fmt.Printf("%s\n", name)
+			page(writer, request, name)
+		})
+	}
 }
 
 func page(writer http.ResponseWriter, request *http.Request, name string) {

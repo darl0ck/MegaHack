@@ -130,6 +130,8 @@ function sendMessage(message) {
 }
 
 function startWebRTC(isOfferer) {
+    console.info('sendmessage')
+
     pc = new RTCPeerConnection(configuration);
 
     pc.onicecandidate = event => {
@@ -146,12 +148,12 @@ function startWebRTC(isOfferer) {
             pc.createOffer(localDescCreated, error => console.error(error));
         };
         dataChannel = pc.createDataChannel('chat');
-        setupDataChannel();
     } else {
         pc.ondatachannel = event => {
             dataChannel = event.channel;
-            setupDataChannel();
         }
+        setupDataChannel();
+
     }
 
     pc.ontrack = event => {
@@ -206,8 +208,8 @@ function setupDataChannel() {
     dataChannel.onopen = checkDataChannelState;
     dataChannel.onclose = checkDataChannelState;
     dataChannel.onmessage = event => {
+        console.info(event.data)
         const jsonData = JSON.parse(event.data);
-        console.log(jsonData.name);
         if (jsonData.type === "chat-message") {
             insertMessageToDOM(jsonData, false);
         } else {
@@ -227,9 +229,12 @@ function processSubtitles(options) {
 function insertMessageToDOM(options, isFromMe) {
     const template = document.querySelector('template[data-template="message"]');
     const nameEl = template.content.querySelector('.message__name');
-    if (options.emoji || options.name) {
-        nameEl.innerText = options.emoji + ' ' + options.name;
+    let name = isFromMe ? 'Вы' : 'Наставник' ;
+    if (options.emoji || name) {
+        nameEl.innerText = options.emoji + ' ' + name;
     }
+    console.info('form lodaed',options);
+
     template.content.querySelector('.message__bubble').innerText = options.content;
     const clone = document.importNode(template.content, true);
     const messageEl = clone.querySelector('.message');
@@ -246,9 +251,11 @@ function insertMessageToDOM(options, isFromMe) {
 const form = document.getElementById('form_test');
 console.log(form);
 
+
 form.addEventListener('submit', () => {
     if (dataChannel.readyState === 'open') {
-        const input = document.querySelector('input[type="text"]');
+        const input = document.querySelector('#text');
+        console.info(input,'input')
         const value = input.value;
         input.value = '';
 

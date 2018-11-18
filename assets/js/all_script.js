@@ -24,8 +24,8 @@ $(document).ready(function () {
                 console.info(el[0].transcript);
                 if (el[0].transcript.toLowerCase().indexOf('главная')+1 || el[0].transcript.toLowerCase().indexOf('главное')+1){
                     window.open('/lk/main/','_self');
-                }else if(el[0].transcript.toLowerCase().indexOf('помощь')+1){
-                    window.open('/lk/help/','_self');
+                }else if (el[0].transcript.toLowerCase().indexOf('чат')+1 || el[0].transcript.toLowerCase().indexOf('наставник')+1 ){
+                    window.open('/lk/chat/','_self');
                 }
             }
         };

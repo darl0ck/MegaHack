@@ -27,15 +27,24 @@
 		});
 	</script> -->
 	<script>
+		var flag = true;
 		$('#eye_btn').click(function(event) {
-			$('body').addClass('black_theme')
+			if(flag){
+				$('body').addClass('black_theme');
+				$('#change_nav_img').attr('src', '/assets/img/lk/nav_icon_1.svg');
+				flag = false
+			}else{
+				$('body').removeClass('black_theme');
+				$('#change_nav_img').attr('src', '/assets/img/lk/nav_icon_1_active.svg');
+				flag = true
+			}	
 		});
 	</script>
 	{{ template "header_lk" }}
 	<main>
 		<div class="container content_box">
 			<ol id="navigation">
-                <li class="write_box"><img src="/assets/img/lk/nav_icon_1_active.svg" alt="nav_icon"></li>
+                <li class="write_box"><img src="/assets/img/lk/nav_icon_1_active.svg" id="change_nav_img" alt="nav_icon"></li>
                 <li><a href="/lk/chat/"><img src="/assets/img/lk/nav_icon_2.svg" alt="nav_icon"></a></li>
                 <li><img src="/assets/img/lk/nav_icon_3.svg" alt="nav_icon"></li>
                 <li><img src="/assets/img/lk/nav_icon_4.svg" alt="nav_icon"></li>
@@ -44,7 +53,7 @@
                 <li><img src="/assets/img/lk/nav_icon_7.svg" alt="nav_icon"></li>
 			</ol>
 			<div id="all_content">
-				<p class="write_box name_page">Общая информация исполнителя</p>
+				<p class="write_box name_page" id="first_line">Общая информация исполнителя</p>
 				<div class="line_block" id="first_line_block">
 					<p class="name_section">ФИО и должность</p>
 					<div class="info_section">

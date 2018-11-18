@@ -120,22 +120,30 @@ button img{
 	height: 30px;
 }
 #eye_btn{
-	opacity: 0.3;
+	border-radius: 5px;
+	transition: 0.3s;
 	background-image: url(../img/lk/eye.svg);
+	-webkit-background-size: 80%;
+	background-size: 80%;
+	background-repeat: no-repeat;
+	background-position: center;
 	cursor: pointer;
 	z-index: 30;	
 	position: fixed;
 	right: 10px;
 	bottom: 10px;
-	width: 30px;
-	height: 30px;
+	width: 50px;
+	height: 50px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
-#eye_btn img{
-	height: 20px;
-	width: 20px;
+#eye_btn:hover{
+	opacity: 1;
+}
+.black_theme #eye_btn{
+	background-color: rgba(255,255,255,0.5);
+	background-image: url(../img/lk/close_eye.svg);
 }
 /*BLACK_THEME*/
 .black_theme footer, .black_theme header{
@@ -168,6 +176,7 @@ button img{
 }
 .black_theme #navigation  li img {
 	filter: invert(3);
+	width: 50px;
 }
 .black_theme h5, .black_theme .name_section, .black_theme .name_page{
 	font-weight: 700;
@@ -176,6 +185,11 @@ button img{
 .black_theme .header_left input::-moz-placeholder{color:#fff;font-size: 22px;}
 .black_theme .header_left input:-moz-placeholder{color:#fff;font-size: 22px;}
 .black_theme .header_left input:-ms-input-placeholder{color:#fff;font-size: 22px;}
+.black_theme #first_line {
+	display: flex;
+	align-items: center;
+	height: 80px;
+} 
 /* ОБУЧЕНИЕ */
 
 
@@ -220,7 +234,6 @@ button img{
 	#second_line_block .last_block {
 		margin-top: 10px;
 	}
-
 	#first_line_block .info_box {
 		width: 100%;
 		margin-bottom: 10px;
@@ -231,7 +244,7 @@ button img{
 	@media screen and (max-width: 767px) {
 		.info_box {
 			width: 100%;
-			margin-bottom: 10px;
+		/*	margin-bottom: 10px;*/
 		}
 	}
 }

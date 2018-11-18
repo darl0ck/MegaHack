@@ -6,7 +6,6 @@
 .logo{width: 50px;}
 .burger{display: none;}
 header .container{
-	padding: 30px 20px;
 	display: flex;
 	justify-content: space-between;
 }
@@ -14,7 +13,13 @@ header a{
 	font-size: 17px;
 	display: block;
 }
+header{
+	padding: 20px;
+}
 header li{margin-right: 20px;}
+header nav{
+	display: flex;
+}
 .header_left{
 	display: flex;
 	align-items: center;

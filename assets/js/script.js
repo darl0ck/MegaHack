@@ -79,11 +79,6 @@ const configuration = {
             url: 'stun:stun.xten.com'
         },
         {
-            url: 'turn:numb.viagenie.ca',
-            credential: 'muazkh',
-            username: 'webrtc@live.com'
-        },
-        {
             url: 'turn:192.158.29.39:3478?transport=udp',
             credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
             username: '28224511:1379330808'
@@ -130,7 +125,6 @@ function sendMessage(message) {
 }
 
 function startWebRTC(isOfferer) {
-    console.info('sendmessage')
 
     pc = new RTCPeerConnection(configuration);
 
@@ -148,11 +142,13 @@ function startWebRTC(isOfferer) {
             pc.createOffer(localDescCreated, error => console.error(error));
         };
         dataChannel = pc.createDataChannel('chat');
+        setupDataChannel();
+
     } else {
         pc.ondatachannel = event => {
             dataChannel = event.channel;
+            setupDataChannel();
         }
-        setupDataChannel();
 
     }
 
@@ -208,11 +204,11 @@ function setupDataChannel() {
     dataChannel.onopen = checkDataChannelState;
     dataChannel.onclose = checkDataChannelState;
     dataChannel.onmessage = event => {
-        console.info(event.data)
         const jsonData = JSON.parse(event.data);
         if (jsonData.type === "chat-message") {
             insertMessageToDOM(jsonData, false);
-        } else {
+        }
+         else {
             processSubtitles(jsonData);
         }
     };
@@ -223,16 +219,23 @@ function checkDataChannelState() {
 }
 
 function processSubtitles(options) {
+    console.info(options)
+    const subtitles = template.content.querySelector('subtitles');
+    subtitles.innerText = options.content;
+
     //TO DO  
+    
 }
 
 function insertMessageToDOM(options, isFromMe) {
     const template = document.querySelector('template[data-template="message"]');
     const nameEl = template.content.querySelector('.message__name');
+    const time = template.content.querySelector('time');
     let name = isFromMe ? 'Вы' : 'Наставник' ;
     if (options.emoji || name) {
         nameEl.innerText = options.emoji + ' ' + name;
     }
+    time.innerText = `12 : 14`
     console.info('form lodaed',options);
 
     template.content.querySelector('.message__bubble').innerText = options.content;
@@ -264,6 +267,7 @@ form.addEventListener('submit', () => {
             name,
             content: value,
             emoji,
+            time: new Date(),
         };
         dataChannel.send(JSON.stringify(data));
         insertMessageToDOM(data, true);

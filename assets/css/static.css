@@ -66,12 +66,8 @@ footer section p{font-weight: bold}
 	margin: 0 20px;
 	height: 57px;
 }
-
 /* MEDIA */
 @media screen and (max-width: 1199px){
-	.black_theme header .container{
-		align-items: flex-start;
-	}
 	.black_theme footer article{
 		align-items: center;
 		text-align: center;
@@ -84,6 +80,10 @@ footer section p{font-weight: bold}
 	}
 }
 @media screen and (max-width: 992px){
+	.black_theme .last_nav{
+		color: #fff!important;
+		background-color: transparent!important;
+	}
 	.burger{
 		transition: 0.3s;
 		display: block;

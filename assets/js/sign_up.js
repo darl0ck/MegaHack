@@ -8,6 +8,8 @@ $(document).ready(function () {
     const field = document.querySelector('.speech-recognition__words');
     const microphoneIcon = document.querySelector('.speech-recognition__icon');
     let space_key = false;
+    const recognition = new SpeechRecognition();
+
 
     recognition.continuous = true;
     recognition.lang = 'ru-RU';
@@ -37,6 +39,18 @@ $(document).ready(function () {
             synth.speak(txtToSay);
         }
     }
+
+    $(".btn_click").click(function () {
+        var id = $(this).add("id");
+        $(".question").css("display","none");
+        switch (id) {
+            case "yes_1":
+                $(".question_2").css("display","block");
+
+                break;
+        }
+
+    });
 
     $(document).keydown(function (e) {
         if(e.keyCode === 32){

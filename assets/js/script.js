@@ -21,27 +21,7 @@ const emoji = randomEmoji();
 const drone = new ScaleDrone('pMbakAnQeahIRBtF');
 const roomName = 'observable-' + roomHash;
 const configuration = {
-    iceServers: [{
-        url: 'stun:stun01.sipphone.com'
-    },
-        {
-            url: 'stun:stun.ekiga.net'
-        },
-        {
-            url: 'stun:stun.fwdnet.net'
-        },
-        {
-            url: 'stun:stun.ideasip.com'
-        },
-        {
-            url: 'stun:stun.iptel.org'
-        },
-        {
-            url: 'stun:stun.rixtelecom.se'
-        },
-        {
-            url: 'stun:stun.schlund.de'
-        },
+    iceServers: [
         {
             url: 'stun:stun.l.google.com:19302'
         },
@@ -204,6 +184,7 @@ function setupDataChannel() {
     dataChannel.onopen = checkDataChannelState;
     dataChannel.onclose = checkDataChannelState;
     dataChannel.onmessage = event => {
+        console.info(event.data);
         const jsonData = JSON.parse(event.data);
         if (jsonData.type === "chat-message") {
             insertMessageToDOM(jsonData, false);
@@ -212,10 +193,13 @@ function setupDataChannel() {
             processSubtitles(jsonData);
         }
     };
+    dataChannel.onerror = event => {
+        console.info(event);
+    }
 }
 
 function checkDataChannelState() {
-    console.log('WebRTC channel state is:', dataChannel.readyState);
+    console.log('WebRTC channel state is:', dataChannel);
 }
 
 function processSubtitles(options) {
@@ -269,7 +253,7 @@ form.addEventListener('submit', () => {
             emoji,
             time: new Date(),
         };
-        dataChannel.send(JSON.stringify(data));
+        console.info(dataChannel.send(data));
         insertMessageToDOM(data, true);
     }
 });

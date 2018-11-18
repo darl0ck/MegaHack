@@ -34,7 +34,7 @@ $(document).ready(function () {
     $(document).keydown(function (e) {
         if(e.keyCode === 32){
             e.preventDefault();
-            window.location.replace("lk_main.html");
+            window.location.replace("/lk/main/");
         }
     });
 

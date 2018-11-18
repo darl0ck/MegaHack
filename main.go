@@ -8,6 +8,9 @@ import (
 	"net/http"
 )
 
+const crtPath = "server.crt"
+const keyPath = "server.key"
+
 func main() {
 	router := mux.NewRouter()
 	router.PathPrefix("/assets").Handler(http.StripPrefix("/assets", http.FileServer(http.Dir("./assets"))))
@@ -20,7 +23,13 @@ func main() {
 	addRoute(router, "/signup/", "sign_up")
 	addRoute(router, "/videochat/", "videochat")
 
-	err := http.ListenAndServeTLS(":443", "server.crt", "server.key", router)
+	go func() {
+		if err := http.ListenAndServe(":80", http.HandlerFunc(redirectToHttps)); err != nil {
+			log.Fatalf("F:ERR handler.startViewOnProd err %s", err.Error())
+		}
+	}()
+
+	err := http.ListenAndServeTLS(":443", crtPath, keyPath, router)
 	if err != nil {
 		log.Println(err.Error())
 	}
@@ -41,4 +50,8 @@ func page(writer http.ResponseWriter, request *http.Request, name string) {
 		return
 	}
 	println(tv.ExecuteTemplate(writer, name, nil))
+}
+
+func redirectToHttps(writer http.ResponseWriter, request *http.Request) {
+	http.Redirect(writer, request, "https://"+request.Host+request.URL.Path, http.StatusTemporaryRedirect)
 }

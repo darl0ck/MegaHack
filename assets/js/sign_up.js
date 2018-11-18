@@ -8,6 +8,7 @@ $(document).ready(function () {
     const field = document.querySelector('.speech-recognition__words');
     const microphoneIcon = document.querySelector('.speech-recognition__icon');
     let space_key = false;
+    const recognition = new SpeechRecognition();
 
     recognition.continuous = true;
     recognition.lang = 'ru-RU';

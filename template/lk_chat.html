@@ -22,73 +22,73 @@
 	  box-sizing: border-box;
 	  border-radius: 2px;
 	  padding: 0;
-	  box-shadow: rgba(156, 172, 172, 0.2) 0 2px 2px, rgba(156, 172, 172, 0.2) 0 4px 4px, rgba(156, 172, 172, 0.2) 0px 8px 8px, rgba(156, 172, 172, 0.2) 0px 16px 16px, rgba(156, 172, 172, 0.2) 0px 32px 32px, rgba(156, 172, 172, 0.2) 0px 64px 64px;
+	  box-shadow: rgba(156, 172, 172, 0.2) 0 2px 2px, rgba(156, 172, 172, 0.2) 0 4px 4px, rgba(156, 172, 172, 0.2) 0 8px 8px, rgba(156, 172, 172, 0.2) 0px 16px 16px, rgba(156, 172, 172, 0.2) 0px 32px 32px, rgba(156, 172, 172, 0.2) 0px 64px 64px;
 	}
-	  .messages {
-	  	width: 100%;
-	  	border: 1px solid red;
-	    flex-grow: 1;
-	    padding: 20px 30px;
-	    overflow: auto;
-	  }
-	  .message {
-	    display: flex;
-	    flex-direction: column;
-	  }
-	  .message--mine {
-	    align-items: flex-end;
-	  }
-	  .message--theirs {
-	    align-items: flex-start;
-	  }
-	  .message__name {
-	    padding: 10px 0;
-	  }
-	  .message__bubble {
-	    padding: 20px;
-	    border-radius: 3px;
-	  }
-	  .message--theirs .message__bubble {
-	    background: #6363bf;
-	    color: white;
-	  }
-	  .message--mine .message__bubble {
-	    background: rgba(156, 172, 172, 0.2);
-	  }
-	  .footer {
-	    line-height: 76px;
-	    border-top: 1px solid rgba(156, 172, 172, 0.2);
-	    display: flex;
-	    flex-shrink: 0;
-	  }
-	  input {
-	    height: 76px;
-	    border: none;
-	    flex-grow: 1;
-	    padding: 0 30px;
-	    font-size: 16px;
-	    background: transparent;
-	  }
-	  button {
-	    border: none;
-	    background: transparent;
-	    padding: 0 30px;
-	    font-size: 16px;
-	    cursor: pointer;
-	  }
+	 .messages {
+		width: 100%;
+		border: 1px solid red;
+		flex-grow: 1;
+		padding: 20px 30px;
+		overflow: auto;
+	 }
+	 .message {
+		display: flex;
+		flex-direction: column;
+	 }
+	 .message--mine {
+		align-items: flex-end;
+	 }
+	 .message--theirs {
+		align-items: flex-start;
+	 }
+	 .message__name {
+		padding: 10px 0;
+	 }
+	 .message__bubble {
+		padding: 20px;
+		border-radius: 3px;
+	 }
+	 .message--theirs .message__bubble {
+		background: #6363bf;
+		color: white;
+	 }
+	 .message--mine .message__bubble {
+		background: rgba(156, 172, 172, 0.2);
+	 }
+	 .footer {
+		line-height: 76px;
+		border-top: 1px solid rgba(156, 172, 172, 0.2);
+		display: flex;
+		flex-shrink: 0;
+	 }
+	 input {
+		height: 76px;
+		border: none;
+		flex-grow: 1;
+		padding: 0 30px;
+		font-size: 16px;
+		background: transparent;
+	 }
+	 button {
+		border: none;
+		background: transparent;
+		padding: 0 30px;
+		font-size: 16px;
+		cursor: pointer;
+	 }
 	</style>
 	{{ template "header_lk" }}
 	<main>
 		<div class="container content_box">
 
 			<ol id="navigation">
-				<li><img src="/assets/img/lk/nav_icon_1.png" alt="nav_icon"></li>
-				<li><a href="#"><img src="/assets/img/lk/nav_icon_2.png" alt="nav_icon"></a></li>
-				<li><a href="#"><img src="/assets/img/lk/nav_icon_3.png" alt="nav_icon"></a></li>
-				<li><a href="#"><img src="/assets/img/lk/nav_icon_4.png" alt="nav_icon"></a></li>
-				<li><a href="#"><img src="/assets/img/lk/nav_icon_5.png" alt="nav_icon"></a></li>
-				<li><a href="#"><img src="/assets/img/lk/nav_icon_6.png" alt="nav_icon"></a></li>
-				<li><a href="#"><img src="/assets/img/lk/nav_icon_7.png" alt="nav_icon"></a></li>
+				<li><a href="/lk/main/"><img src="/assets/img/lk/nav_icon_1.svg" alt="nav_icon"></a></li>
+				<li class="write_box"><img src="/assets/img/lk/nav_icon_2_active.svg" alt="nav_icon"></li>
+				<li><img src="/assets/img/lk/nav_icon_3.svg" alt="nav_icon"></li>
+				<li><img src="/assets/img/lk/nav_icon_4.svg" alt="nav_icon"></li>
+				<li><img src="/assets/img/lk/nav_icon_5.svg" alt="nav_icon"></li>
+				<li><img src="/assets/img/lk/nav_icon_6.svg" alt="nav_icon"></li>
+				<li><img src="/assets/img/lk/nav_icon_7.svg" alt="nav_icon"></li>
 			</ol>
 
 			<div id="all_content">
@@ -163,11 +163,7 @@
 						</template>	
 					</div>
 				</div>
-
 				<!-- <div class="copy">Send your URL to a friend to start a video call</div> -->
-				
-				
-
             </div>
 		</div>
 	</main>

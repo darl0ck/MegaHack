@@ -183,6 +183,9 @@ video {
 .message--mine .message__bubble {
 	background: rgba(156, 172, 172, 0.2);
 }
+.burger{
+	margin-top: 20px;
+}
 .footer {
 	line-height: 76px;
 	border-top: 1px solid rgba(156, 172, 172, 0.2);

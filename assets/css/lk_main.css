@@ -86,7 +86,30 @@ article{
 	color: #00a3c7;
 	margin-bottom: 5px;
 }
-
+.wrap_chats{
+	margin-top: 20px;
+	display: flex;
+}
+.chat_columns_head{
+	display: flex;
+	justify-content: space-between;
+}
+.chat_columns_head p{
+	margin-bottom: 20px;	
+}
+.video_column{
+	width: 55%;
+	margin-right: 20px;
+}
+.message_column{
+	width: 45%;
+}
+button img{
+	background-image: url(../img/lk/send_btn.png);
+	z-index: 3;
+	width: 30px;
+	height: 30px;
+}
 /* ОБУЧЕНИЕ */
 
 

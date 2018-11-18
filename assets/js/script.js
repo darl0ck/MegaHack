@@ -1,6 +1,5 @@
-// Generate random room name if needed
-// Я.Собака
 
+// Generate random room name if needed
 if (!location.hash) {
     location.hash = Math.floor(Math.random() * 0xFFFFFF).toString(16);
 }
@@ -17,11 +16,42 @@ function randomEmoji() {
     return possibleEmojis[randomIndex];
 }
 
+
 const emoji = randomEmoji();
+const user = prompt('Enter your name:');
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const recognition = new SpeechRecognition();
+
+recognition.continuous = true;
+    recognition.lang = 'ru-RU';
+    recognition.interimResults = true;
+    recognition.maxAlternatives = 1;
+    recognition.start();
+
 const drone = new ScaleDrone('pMbakAnQeahIRBtF');
 const roomName = 'observable-' + roomHash;
 const configuration = {
-    iceServers: [
+    iceServers: [{
+            url: 'stun:stun01.sipphone.com'
+        },
+        {
+            url: 'stun:stun.ekiga.net'
+        },
+        {
+            url: 'stun:stun.fwdnet.net'
+        },
+        {
+            url: 'stun:stun.ideasip.com'
+        },
+        {
+            url: 'stun:stun.iptel.org'
+        },
+        {
+            url: 'stun:stun.rixtelecom.se'
+        },
+        {
+            url: 'stun:stun.schlund.de'
+        },
         {
             url: 'stun:stun.l.google.com:19302'
         },
@@ -59,6 +89,11 @@ const configuration = {
             url: 'stun:stun.xten.com'
         },
         {
+            url: 'turn:numb.viagenie.ca',
+            credential: 'muazkh',
+            username: 'webrtc@live.com'
+        },
+        {
             url: 'turn:192.158.29.39:3478?transport=udp',
             credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
             username: '28224511:1379330808'
@@ -74,11 +109,11 @@ let room;
 let pc;
 
 
-function onSuccess() {}
+function onSuccess() {};
 
 function onError(error) {
     console.error(error);
-}
+};
 
 drone.on('open', error => {
     if (error) {
@@ -105,7 +140,6 @@ function sendMessage(message) {
 }
 
 function startWebRTC(isOfferer) {
-
     pc = new RTCPeerConnection(configuration);
 
     pc.onicecandidate = event => {
@@ -120,16 +154,14 @@ function startWebRTC(isOfferer) {
     if (isOfferer) {
         pc.onnegotiationneeded = () => {
             pc.createOffer(localDescCreated, error => console.error(error));
-        };
+        }
         dataChannel = pc.createDataChannel('chat');
         setupDataChannel();
-
     } else {
         pc.ondatachannel = event => {
             dataChannel = event.channel;
             setupDataChannel();
         }
-
     }
 
     pc.ontrack = event => {
@@ -184,44 +216,42 @@ function setupDataChannel() {
     dataChannel.onopen = checkDataChannelState;
     dataChannel.onclose = checkDataChannelState;
     dataChannel.onmessage = event => {
-        console.info(event.data);
-        const jsonData = event.data;
-        if (jsonData.type === "chat-message") {
+        const jsonData = JSON.parse(event.data);
+        if (jsonData.type == "chat-message") {
             insertMessageToDOM(jsonData, false);
-        }
-         else {
-            processSubtitles(jsonData);
+        } else {
+        console.info(jsonData.content,'субтитры');
+
+            user !== jsonData.user ? processSubtitles(jsonData) : false;
         }
     };
-    dataChannel.onerror = event => {
-        console.info(event);
-    }
 }
 
 function checkDataChannelState() {
-    console.log('WebRTC channel state is:', dataChannel);
+    console.log('WebRTC channel state is:', dataChannel.readyState);
 }
 
-// function processSubtitles(options) {
-//     console.info(options)
-//     const subtitles = template.content.querySelector('subtitles');
-//     subtitles.innerText = options.content;
+recognition.onresult = (event) => {
+    const res = (event.results[0][0].transcript);
+    for (let el of event.results){
+        console.info(el[0].transcript);
+        sendSubtitles(el[0].transcript,user);
+    }
+};
 
-//     //TO DO  
-    
-// }
+function processSubtitles(options) {
+    const subtitles = document.getElementById('subtitles');
+    subtitles.innerText = options.content;
+    //TO DO  
+
+}
 
 function insertMessageToDOM(options, isFromMe) {
     const template = document.querySelector('template[data-template="message"]');
     const nameEl = template.content.querySelector('.message__name');
-    const time = template.content.querySelector('time');
-    let name = isFromMe ? 'Вы' : 'Наставник' ;
-    if (options.emoji || name) {
-        nameEl.innerText = options.emoji + ' ' + name;
+    if (options.emoji || options.name) {
+        nameEl.innerText = options.emoji + ' ' + options.name;
     }
-    time.innerText = `12 : 14`
-    console.info('form lodaed',options);
-
     template.content.querySelector('.message__bubble').innerText = options.content;
     const clone = document.importNode(template.content, true);
     const messageEl = clone.querySelector('.message');
@@ -230,19 +260,23 @@ function insertMessageToDOM(options, isFromMe) {
     } else {
         messageEl.classList.add('message--theirs');
     }
+
     const messagesEl = document.querySelector('.messages');
     messagesEl.appendChild(clone);
+
+    // Scroll to bottom
     messagesEl.scrollTop = messagesEl.scrollHeight - messagesEl.clientHeight;
 }
+
+
+
 
 const form = document.getElementById('form_test');
 console.log(form);
 
-
 form.addEventListener('submit', () => {
     if (dataChannel.readyState === 'open') {
         const input = document.querySelector('#text');
-        console.info(input,'input')
         const value = input.value;
         input.value = '';
 
@@ -251,17 +285,21 @@ form.addEventListener('submit', () => {
             name,
             content: value,
             emoji,
-            time: new Date(),
         };
-        console.info(dataChannel.send(data));
+
+        dataChannel.send(JSON.stringify(data));
+
         insertMessageToDOM(data, true);
     }
 });
 
-function sendSubtitles(value) {
+function sendSubtitles(value,user) {
+
     const data = {
         type: "subtitles",
+        user: user,
         content: value,
     };
     dataChannel.send(JSON.stringify(data));
 }
+

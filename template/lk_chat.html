@@ -20,9 +20,13 @@
 		#textMessage
 		{
 			background: linear-gradient(45deg, rgba(0,131,176,1) 0%,rgba(0,180,219,1) 100%) !important;
+			max-width: 170px;
+    		overflow-wrap: break-word;
+			border-radius: 32px;
+
 		}
 
-		#remoteVideo
+		#localVideo
 		{
 			position: relative;
 
@@ -33,13 +37,18 @@
 			margin-left: auto;
 		}
 
-		#localVideo{
+		#remoteVideo{
 			z-index: 1;
 		}
 
-		subtitles{
+		#subtitles{
 			z-index: 999999;
-			position: relative;
+			width: 25vw;
+			background-color: rgba(21, 20, 20, 0.7);
+			overflow-x: hidden;
+			color: white!important;
+			margin-left: 9vw;
+			text-align: center;
 		}
 
 		video,
@@ -91,6 +100,9 @@
 		.message__name {
 			display: none;
 		}
+
+
+
 	</style>
 	{{ template "header_lk" }}
 	<main>
@@ -112,13 +124,16 @@
 				<div class="wrap_chats">
 					<div class="video_column">
 						<div class="chat_columns_head">
-							<p>Видевызов наставнику Наталья</p>
+							<p>Видевызов наставнику</p>
 							<p>Последний вызов: Вчера 04:20</p>
 						</div>
 						<div class="videoBox">
-							<video id="localVideo" autoplay muted>
+								<video id="remoteVideo" autoplay></video>
+								<video id="localVideo" autoplay muted>
+
 							</video>
-							<video id="remoteVideo" autoplay></video>
+							<p id="subtitles">
+								</p>
 							<!-- <subtitles>
 								фывфуа
 							</subtitlesx> -->
@@ -126,7 +141,7 @@
 					</div>
 					<div class="message_column">
 						<div class="chat_columns_head">
-							<p>Чат с наставником Наталья</p>
+							<p>Чат с наставником</p>
 						</div>
 						<div class="content">
 							<div class="messages">

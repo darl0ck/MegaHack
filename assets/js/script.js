@@ -16,7 +16,6 @@ function randomEmoji() {
 }
 
 const emoji = randomEmoji();
-const name = prompt("What's your name?");
 const drone = new ScaleDrone('pMbakAnQeahIRBtF');
 const roomName = 'observable-' + roomHash;
 const configuration = {
@@ -237,11 +236,8 @@ function insertMessageToDOM(options, isFromMe) {
     } else {
         messageEl.classList.add('message--theirs');
     }
-
     const messagesEl = document.querySelector('.messages');
     messagesEl.appendChild(clone);
-
-    // Scroll to bottom
     messagesEl.scrollTop = messagesEl.scrollHeight - messagesEl.clientHeight;
 }
 
@@ -260,9 +256,7 @@ form.addEventListener('submit', () => {
             content: value,
             emoji,
         };
-
         dataChannel.send(JSON.stringify(data));
-
         insertMessageToDOM(data, true);
     }
 });
